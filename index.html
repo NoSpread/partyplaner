@@ -1,0 +1,60 @@
+<!-- Hier ein kleines Beispiel wie ein Import Dialog meiner Meinung nach aussehen könnte-->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style>
+		#result {
+			display: block;
+			width: 400px;
+			height: 200px;
+		}
+
+		#import {
+			margin: 10px 0;
+		}
+	</style>
+	<title>Import</title>
+</head>
+
+<body>
+	​
+	<input type="file" id="selectFiles" value="Import" /><br />
+	<button id="import">Import</button>
+	<button onclick="readFile()">Banane</button>
+	<button onclick="saveFile('test', 'test.json')">aaa</button>
+	<textarea id="result">
+
+		</textarea>
+	​
+</body>
+<script src="module.js"></script>
+<script type="text/javascript">
+	document.getElementById('import').onclick = function () {
+		var files = document.getElementById('selectFiles').files;
+		console.log(files);
+		if (files.length <= 0) {
+			return false;
+		}
+
+		var fr = new FileReader();
+
+		fr.onload = function (e) {
+			console.log(e);
+			var result = JSON.parse(e.target.result);
+			var formatted = JSON.stringify(result, null, 2);
+			document.getElementById('result').value = formatted;
+		}
+
+		fr.readAsText(files.item(0));
+	};
+
+	function readFile() {
+		getFile()
+		.then(data => console.log)
+		.catch(err => console.error(err))
+	}
+</script>
+
+</html>
+​
