@@ -1,9 +1,9 @@
 # partyplaner
 🐱‍🐉
 
-Darstellung: Kevin
-Befindlichkeit: Florian
-Statistik: Lukas
-Import_Export: Moritz
-Konfiguration: Julian
-Steuerung: Peter
+Darstellung: Kevin<br>
+Befindlichkeit: Florian<br>
+Statistik: Lukas<br>
+Import_Export: Moritz<br>
+Konfiguration: Julian<br>
+Steuerung: Peter<br>
