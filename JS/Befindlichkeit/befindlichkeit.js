@@ -14,7 +14,7 @@ class Befindlichkeit {
 				break;
 			}
 		}
-		console.log("Befindlichkeit:updatePosition(".playershort.")=".player.name);
+		console.log("Befindlichkeit:updatePosition(" + playershort + ")=" + player.name);
 
 		var happiness;
 		var i = 0, maxHappiness=0;
