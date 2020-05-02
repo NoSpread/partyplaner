@@ -41,7 +41,7 @@ class Steuerung{
     this.darstellung.drawPlayers(this.game.players);
 
     this.darstellung.updatePartyIndex(this.statistik.partyIndex());
-    this.darstellung.drawStatistics(this.game.players);
+    this.darstellung.drawStatistics(this.game.players, this.statistik);
   }
 
   calculateCurrentPlayer(){
