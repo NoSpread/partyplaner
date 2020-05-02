@@ -3,15 +3,17 @@
     <head>
         <title>Best Partyplaner Ever.</title>
         <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="..\CSS\partyplaner.css">
+        <link rel="stylesheet" type="text/css" href="..\CSS\bootstrap\bootstrap.min.css">
     </head>
-    <body>
+    <body id="body">
         <!--Drawing of the Party-->
         <canvas id="canvas" style="border:1px solid #000000;">
             Your browser does not support the canvas element.
         </canvas>
 
         <!--Average Mental Health-->
-        <table id="avgHappiness">
+        <table id="avgHappiness" class="table">
         </table>
 
         <!--UI-->
@@ -37,8 +39,12 @@
         <script type="text/javascript" src="..\JS\Konfiguration\konfiguration.js"></script>
         <script type="text/javascript" src="..\JS\Statistik\statistik.js"></script>
         <script type="text/javascript" src="..\JS\Steuerung\steuerung.js"></script>
-        <script type="text/javascript" src="..\JS\setup.js"></script>
+        <script type="text/javascript">
+            steuerung = new Steuerung();
+        </script>
 
-        
+        <script type="text/javascript" src="..\JS\bootstrap\jquery-3.4.1.slim.min.js"></script>
+        <script type="text/javascript" src="..\JS\bootstrap\popper.min.js"></script>
+        <script type="text/javascript" src="..\JS\bootstrap\bootstrap.min.js"></script>
     </body>
 </html>
