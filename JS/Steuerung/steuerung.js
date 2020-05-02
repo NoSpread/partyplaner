@@ -11,17 +11,21 @@ class Steuerung{
   function constructor(){
     this.players = new Array();
     this.darstellung = new Darstellung(this);
-    this.konfiguration = new Konfiguration();
+    //this.konfiguration = new Konfiguration();
     this.simulationSpeed = 0;
     simulate();
   }
 
   function importFile(file){
     this.game = importJSON(file);
-    konfiguration.validate(this.game);
+    // if(konfiguration.validate(this.game)){
     extractShortNames();
     this.befindlichkeit = new Befindlichkeit(this.game);
-    this.statistik = new Statistik(this.game);
+    this.statistik = new Statistik();
+    return true;
+    // }else{
+    // return false;
+    // }
   }
 
   function exportFile(){
@@ -29,13 +33,13 @@ class Steuerung{
   }
 
   function calculatePlayer(shortName){
-    this.befindlichkeit.………(shortName);
+    this.befindlichkeit.updatePosition(shortName);
     // New position and happiness is automaticaly updated in game object.
     this.darstellung.drawRoom(this.game.room);
     this.darstellung.drawTable(this.game.table);
     this.darstellung.drawPlayers(this.game.players);
 
-    this.darstellung.updatePartyIndex(this.statistik.………());
+    this.darstellung.updatePartyIndex(this.statistik.partyIndex());
     this.darstellung.drawStatistics(players);
   }
 
