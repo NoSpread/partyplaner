@@ -8,7 +8,7 @@ class Befindlichkeit {
 	updatePosition(playershort) {
 		var player;
 		for(playerx in this.players) {
-			if((playerx.short == playershort) {
+			if(playerx.short == playershort) {
 				player = playerx;
 				break;
 			}
