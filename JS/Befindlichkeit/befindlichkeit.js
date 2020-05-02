@@ -50,9 +50,9 @@ class Befindlichkeit {
 		   playerNew.yPos >= this.game.table.yPos && playerNew.yPos <= this.game.table.yPos + this.game.table.heigth) // Player on table
 			return false;
 
-		for(var player in this.game.players) {
-			if(player.name != playerNew.name) {
-				if(player.xPos == playerNew.xPos && player.yPos == playerNew.yPos)
+		for(var s = 0; s < this.players.length; s++) {
+			if(this.players[s].name != playerNew.name) {
+				if(this.players[s].xPos == playerNew.xPos && this.players[s].yPos == playerNew.yPos)
 					return false;
 				}
 		}
