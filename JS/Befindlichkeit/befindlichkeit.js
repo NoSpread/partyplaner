@@ -15,10 +15,9 @@ class Befindlichkeit {
 				break;
 			}
 		}
-		console.log("Befindlichkeit:updatePosition(" + playershort + "/" + player.name + ");");
 
 		var happiness = new Array();
-		var i = 0, maxHappiness=0;
+		var i = 0, maxHappiness = 0;
 		var playerNew = new Array();
 
 		this.clonen(playerNew, player);
@@ -39,7 +38,7 @@ class Befindlichkeit {
 		player.xPos = happiness[maxHappiness][0];
 		player.yPos = happiness[maxHappiness][1];
 		player.happiness = happiness[maxHappiness][2];
-		console.log("Befindlichkeit:updatePosition():New Position: (" + player.xPos + ", " + player.yPos + ")");
+		console.log("Befindlichkeit:updatePosition():New Position: (" + player.xPos + ", " + player.yPos + "):" + player.happiness);
 	}
 
 	isValid(playerNew) {
@@ -61,11 +60,13 @@ class Befindlichkeit {
 	}
 	
 	getHappiness(playerNew) {
-		var happiness = 0;
-		for(var player in this.game.players) {
-			if(player.name != playerNew.name) {
-				var distance = Math.sqrt(Math.pow(playerNew.xPos - player.xPos, 2) + Math.pow(playerNew.yPos - player.yPos, 2));
-				happiness += Math.abs(distance - playerNew.distances[player.name]); 		//mag Fehler schmeißen distances[player] vllt
+		var happiness = 1.00;
+		var player = this.players
+
+		for(var s = 0; s < player.length; s++) {
+			if(player[s].name != playerNew.name) {
+				var distance = Math.sqrt(Math.pow(playerNew.xPos * 1 - player[s].xPos * 1, 2) + Math.pow(playerNew.yPos * 1 - player[s].yPos * 1, 2));
+				happiness += Math.abs(distance - playerNew.distances[player[s].short]); 		//mag Fehler schmeißen distances[player] vllt
 			}
 		}
 		var table = new Array();
@@ -84,7 +85,8 @@ class Befindlichkeit {
 			table[1] = playerNew.yPos;
 		}
 		var distance = Math.sqrt(Math.pow(playerNew.xPos - table[0], 2) + Math.pow(playerNew.yPos - table[1], 2));
-		happiness += Math.abs(distance - playerNew.distances[this.game.table]);
+
+		happiness += Math.abs(distance - playerNew.distances["Table"]);
 		return happiness;
 	}
 
