@@ -27,12 +27,12 @@
 	}
 
 	function isValid(playerNew, global) {
-		if(playerNew.xPos < 0 || playerNew.xPos >= global.Room.length || 
-		   playerNew.yPos < 0 || playerNew.yPos >= global.Room.width) //Player out of bounds
+		if(playerNew.xPos < 0 || playerNew.xPos >= global.Room.width || 
+		   playerNew.yPos < 0 || playerNew.yPos >= global.Room.heigth) //Player out of bounds
 			return false;
 		
-		if(playerNew.xPos >= global.Table.xPos && playerNew.xPos <= global.Table.xPos + global.Table.length &&
-		   playerNew.yPos >= global.Table.yPos && playerNew.yPos <= global.Table.yPos + global.Table.width) // Player on Table
+		if(playerNew.xPos >= global.Table.xPos && playerNew.xPos <= global.Table.xPos + global.Table.width &&
+		   playerNew.yPos >= global.Table.yPos && playerNew.yPos <= global.Table.yPos + global.Table.heigth) // Player on Table
 			return false;
 
 		for(player in global.players) {
@@ -55,15 +55,15 @@
 		var table;
 		if(playerNew.xPos < global.Table.xPos) {	//X Position 
 			table[0] = global.Table.xPos;
-		} else if(playerNew.xPos > global.Table.xPos + global.Table.length ) {
-			table[0] = global.Table.xPos + global.Table.length;
+		} else if(playerNew.xPos > global.Table.xPos + global.Table.width ) {
+			table[0] = global.Table.xPos + global.Table.width;
 		} else {
 			table[0] = playerNew.xPos;
 		}
 		if(playerNew.yPos < global.Table.yPos) {	//Y Position 
 			table[1] = global.Table.yPos;
-		} else if(playerNew.yPos > global.Table.yPos + global.Table.width ) {
-			table[1] = global.Table.yPos + global.Table.width;
+		} else if(playerNew.yPos > global.Table.yPos + global.Table.heigth ) {
+			table[1] = global.Table.yPos + global.Table.heigth;
 		} else {
 			table[1] = playerNew.yPos;
 		}
