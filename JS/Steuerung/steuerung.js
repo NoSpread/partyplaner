@@ -14,7 +14,6 @@ class Steuerung{
     this.darstellung = new Darstellung(this);
     //this.konfiguration = new Konfiguration();
     this.simulationSpeed = 0;
-    this.simulate();
   }
 
   importFile(file){
@@ -59,12 +58,16 @@ class Steuerung{
     }else if(speed < 0){
       speed = 0;
     }
+    if(speed > 0 && this.simulationSpeed == 0){
+      setTimeout(this.simulate(), 0);
+    }
     this.simulationSpeed = speed;
   }
 
   simulate(){
-    while(this.simulationSpeed > 0){
-      setTimeout(calculateCurrentPlayer(), 100*(10-this.simulationSpeed));
+    if(this.simulationSpeed > 0)this.calculateCurrentPlayer();
+    if(this.simulationSpeed > 0){
+      setTimeout(this.simulate, 1000 - 100*this.simulationSpeed);
     }
   }
 }
