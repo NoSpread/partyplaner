@@ -34,7 +34,7 @@ class Befindlichkeit {
 			}
 		}
 		playerNew.xPos(happiness[maxHappiness][0]);
-		playerNew.yPos(happiness[maxHappiness[1]);
+		playerNew.yPos(happiness[maxHappiness][1]);
 		playerNew.happiness(happiness[maxHappiness][2]);
 		player = playerNew;
 	}
@@ -94,5 +94,4 @@ class Befindlichkeit {
 		playerNew.xPos = player.xPos;
 		playerNew.yPos = player.yPos;
 	}
-
 }
