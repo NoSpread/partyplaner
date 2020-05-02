@@ -7,7 +7,7 @@ class Befindlichkeit {
 
 	updatePosition(playershort) {
 		var player;
-
+		console.log("Befindlichkeit:updatePosition(" + playershort + ")");
 
 		for(var s = 0; s < this.players.length; s++) {
 			if(this.players[s].short == playershort) {
@@ -36,10 +36,9 @@ class Befindlichkeit {
 				}
 			}
 		}
-		playerNew.xPos = happiness[maxHappiness][0];
-		playerNew.yPos = happiness[maxHappiness][1];
-		playerNew.happiness = happiness[maxHappiness][2];
-		player = playerNew;
+		player.xPos = happiness[maxHappiness][0];
+		player.yPos = happiness[maxHappiness][1];
+		player.happiness = happiness[maxHappiness][2];
 		console.log("Befindlichkeit:updatePosition():New Position: (" + player.xPos + ", " + player.yPos + ")");
 	}
 
