@@ -1,0 +1,72 @@
+// Currently undefined interfaces are represented with ………()
+
+class Steuerung{
+  var players = new Array();
+  var simulationSpeed;
+  var currentPlayer; // shortNames index of current player
+  var shortNames;
+  var darstellung;
+  var befindlichkeit;
+  var konfiguration;
+  var importExport;
+  var statistik;
+  var game;
+
+  function extractShortNames(){
+    this.shortNames = new Array();
+    this.game.players.forEach(function(item){ this.shortNames.push(item.short); });
+    this.currentPlayer = 0;
+  }
+
+  function Steuerung(){
+    this.darstellung = new Darstellung(this);
+    this.konfiguration = new Konfiguration();
+    this.importExport = new ImportExport();
+    this.simulationSpeed = 0;
+    simulate();
+  }
+
+  function importFile(file){
+    this.game = importExport.readFile(file);
+    konfiguration.validate(this.game);
+    extractShortNames();
+    this.befindlichkeit = new Befindlichkeit(this.game);
+    this.statistik = new Statistik(this.game);
+    this.darstellung.drawRoom(this.game.room);
+    this.darstellung.drawTable(this.game.table, this.game.room);
+  }
+
+  function calculatePlayer(shortName){
+    this.befindlichkeit.………(shortName);
+    // New position and happiness is automaticaly updated in game object.
+    this.darstellung.drawPlayers(this.game.players);
+
+    this.darstellung.updatePartyIndex(this.statistik.………());
+    this.darstellung.drawStatistics(players);
+  }
+
+  function calculateCurrentPlayer(){
+    calculatePlayer(this.shortNames[this.currentPlayer]);
+    nextPlayer();
+  }
+
+  function nextPlayer(){
+    this.currentPlayer = (this.currentPlayer + 1) % this.shortNames.count;
+  }
+
+  function setSimulationSpeed(speed){
+    if(speed > 8){
+      speed = 8;
+    }elseif(speed < 0){
+      speed = 0;
+    }
+    this.simulationSpeed = speed;
+  }
+
+  async function simulate(){
+    while(this.simulationSpeed > 0){
+      calculateCurrentPlayer();
+      await new Promise(r => setTimeout(r, 100*(10-this.simulationSpeed));
+    }
+  }
+}
