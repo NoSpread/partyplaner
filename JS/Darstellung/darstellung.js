@@ -63,22 +63,33 @@ class Darstellung{
     
     drawStatistics(players, statistik)
     {
-        var table = document.getElementById("avgHappiness")
+        var table = document.getElementById("avgHappiness");
         table.innerHTML = "";
         var element;
         var text;
 
-        var tableRow = document.createElement("tr")
+        var tableRow = document.createElement("tr");
+        element = document.createElement("th");
+        element.setAttribute("scope", "col");
+        text = document.createTextNode("Name");
+        element.appendChild(text);
+        tableRow.appendChild(element);
         for(var i = 0; i < players.length; i++)
         {  
             element = document.createElement("th");
+            element.setAttribute("scope", "col");
             text = document.createTextNode(players[i].name);
             element.appendChild(text);
             tableRow.appendChild(element);
         }
         table.appendChild(tableRow);
 
-        tableRow = document.createElement("tr")
+        tableRow = document.createElement("tr");
+        element = document.createElement("td");
+        element.setAttribute("scope", "row");
+        text = document.createTextNode("∅ Fröhlichkeit");
+        element.appendChild(text);
+        tableRow.appendChild(element);
         for(i = 0; i < players.length; i++)
         {  
             element = document.createElement("td");
@@ -88,7 +99,12 @@ class Darstellung{
         }
         table.appendChild(tableRow);
         
-        tableRow = document.createElement("tr")
+        tableRow = document.createElement("tr");
+        element = document.createElement("td");
+        element.setAttribute("scope", "row");
+        text = document.createTextNode("Fröhlichkeit");
+        element.appendChild(text);
+        tableRow.appendChild(element);
         for(i = 0; i < players.length; i++)
         {  
             element = document.createElement("td");
