@@ -95,15 +95,3 @@ class Darstellung{
         document.getElementById("partyindex").innerText = partyIndex;
     }
 }
-
-
-
-//Test
-var room = {width: 5, height: 7};
-var table = {xPos: 1, yPos: 1, width: 2, height: 4};
-var players = [ {name: "test1", xPos: 0, yPos: 0, happiness: 5}, {name: "test2", xPos: 0, yPos: 2, happiness: 8}];
-darstellung = new Darstellung();
-darstellung.drawRoom(room);
-darstellung.drawTable(table);
-darstellung.drawStatistics(players);
-darstellung.drawStatistics(players);
