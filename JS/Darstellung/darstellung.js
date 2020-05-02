@@ -82,7 +82,7 @@ class Darstellung{
         for(i = 0; i < players.length; i++)
         {  
             element = document.createElement("td");
-            text = document.createTextNode(statistik.avgHappiness(players[i]));
+            text = document.createTextNode(statistik.avgHappiness(players[i]).toFixed(5));
             element.appendChild(text);
             tableRow.appendChild(element);
         }
@@ -92,7 +92,7 @@ class Darstellung{
         for(i = 0; i < players.length; i++)
         {  
             element = document.createElement("td");
-            text = document.createTextNode(players[i].happiness);
+            text = document.createTextNode(players[i].happiness.toFixed(5));
             element.appendChild(text);
             tableRow.appendChild(element);
         }
