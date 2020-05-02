@@ -1,16 +1,6 @@
 // Currently undefined interfaces are represented with ………()
 
 class Steuerung{
-  var players = new Array();
-  var simulationSpeed;
-  var currentPlayer; // shortNames index of current player
-  var shortNames;
-  var darstellung;
-  var befindlichkeit;
-  var konfiguration;
-  var importExport;
-  var statistik;
-  var game;
 
   function extractShortNames(){
     this.shortNames = new Array();
@@ -19,6 +9,7 @@ class Steuerung{
   }
 
   function Steuerung(){
+    this.players = new Array();
     this.darstellung = new Darstellung(this);
     this.konfiguration = new Konfiguration();
     this.importExport = new ImportExport();
