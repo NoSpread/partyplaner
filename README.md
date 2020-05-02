@@ -22,28 +22,22 @@ distances[]<br>
 }<br>
 <br>
 distances -> {<br>
-playerName,<br>
+player,<br>
 distance<br>
 }<br>
 <br>
 Table -> {<br>
 xPos,<br>
 yPos,<br>
-length,<br>
-width<br>
+length,  //x-Achse<br>
+width    //y-Achse<br>
 }<br>
 <br>
 Room -> {<br>
-width,<br>
-length<br>
+length, //x-Achse<br>
+width   //y-Achse<br>
 }<br>
 Game -> {<br>
 Player,<br>
 Table,<br>
 Room<br>
-
-Game -> {<br>
-Player,<br>
-Table,<br>
-Room<br>
-}<br>
