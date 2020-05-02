@@ -17,6 +17,7 @@ class Steuerung{
   }
 
   importFile(file){
+    this.simulationSpeed = 0;
     this.game = importJSON(file);
     // if(konfiguration.validate(this.game)){
     this.extractShortNames();
@@ -59,16 +60,15 @@ class Steuerung{
       speed = 0;
     }
     if(speed > 0 && this.simulationSpeed == 0){
-      setTimeout(this.simulate(), 0);
+      setTimeout(this.simulate.bind(this), 0);
     }
     this.simulationSpeed = speed;
   }
 
   simulate(){
-    console.log("test");
     if(this.simulationSpeed > 0)this.calculateCurrentPlayer();
     if(this.simulationSpeed > 0){
-      setTimeout(this.simulate, 1000 - 100*this.simulationSpeed);
+      this.timeout = setTimeout(this.simulate.bind(this), 1000 - 100*this.simulationSpeed);
     }
   }
 }
