@@ -72,8 +72,11 @@ class Konfiguration {
         return true;
     }
 
-    getCurrentConfig = function() {
+    getCurrentConfig() {
         return this.config;
     }
 
+    getCurrentConfigPart(part) {
+        return (this.config[part] || null);
+    }
 }
