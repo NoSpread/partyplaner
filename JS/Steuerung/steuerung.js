@@ -22,13 +22,13 @@ class Steuerung{
     extractShortNames();
     this.befindlichkeit = new Befindlichkeit(this.game);
     this.statistik = new Statistik(this.game);
-    this.darstellung.drawRoom(this.game.room);
-    this.darstellung.drawTable(this.game.table, this.game.room);
   }
 
   function calculatePlayer(shortName){
     this.befindlichkeit.………(shortName);
     // New position and happiness is automaticaly updated in game object.
+    this.darstellung.drawRoom(this.game.room);
+    this.darstellung.drawTable(this.game.table);
     this.darstellung.drawPlayers(this.game.players);
 
     this.darstellung.updatePartyIndex(this.statistik.………());
