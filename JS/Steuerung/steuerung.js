@@ -40,7 +40,7 @@ class Steuerung{
     this.darstellung.drawPlayers(this.game.players);
 
     this.darstellung.updatePartyIndex(this.statistik.partyIndex());
-    this.darstellung.drawStatistics(players);
+    this.darstellung.drawStatistics(this.game.players);
   }
 
   calculateCurrentPlayer(){
@@ -65,6 +65,7 @@ class Steuerung{
   }
 
   simulate(){
+    console.log("test");
     if(this.simulationSpeed > 0)this.calculateCurrentPlayer();
     if(this.simulationSpeed > 0){
       setTimeout(this.simulate, 1000 - 100*this.simulationSpeed);
