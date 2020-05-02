@@ -17,7 +17,7 @@ class Steuerung{
   importFile(file){
     this.game = importJSON(file);
     // if(konfiguration.validate(this.game)){
-    extractShortNames();
+    this.extractShortNames();
     this.befindlichkeit = new Befindlichkeit(this.game);
     this.statistik = new Statistik();
     return true;
