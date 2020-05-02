@@ -24,7 +24,7 @@
             <button onclick="steuerung.setSimulationSpeed(8)">Geschwindigkeit: 8x</button>
             <button onclick="steuerung.setSimulationSpeed(1)">Simulation starten/fortsetzen</button>
             <button onclick="steuerung.setSimulationSpeed(0)">Simulation pausieren</button>
-            <input type="file" id="import" onchange="darstellung.readFile()"></button>
+            <input type="file" id="import" onchange="steuerung.darstellung.readFile()"></button>
             <button onclick="steuerung.exportFile()">Exportieren</button>
             <button><a href="customConfig.html">Eigene Konfiguration</a></button>
         </div>
