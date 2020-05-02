@@ -87,7 +87,7 @@ class Darstellung{
         tableRow = document.createElement("tr");
         element = document.createElement("td");
         element.setAttribute("scope", "row");
-        text = document.createTextNode("∅ Fröhlichkeit");
+        text = document.createTextNode("Fröhlichkeit ∅");
         element.appendChild(text);
         tableRow.appendChild(element);
         for(i = 0; i < players.length; i++)
