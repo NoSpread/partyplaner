@@ -1,14 +1,14 @@
 class Befindlichkeit {
-	function constructor(game) {
+	constructor(game) {
 		this.game = game;
 		this.players = this.game.players;
 	}
 
 
-	function updatePosition(playershort) {
+	updatePosition(playershort) {
 		var player;
 		for(playerx in this.players) {
-			if((playerx.short == playershort) {
+			if(playerx.short == playershort) {
 				player = playerx;
 				break;
 			}
@@ -22,9 +22,9 @@ class Befindlichkeit {
 		for(playerNew.xPos = player.xPos-1; playerNew.xPos <= player.xPos+1;playerNew.xPos++) {
 			for(playerNew.yPos = player.yPos-1; playerNew.yPos <= player.yPos+1; playerNew.yPos++) {
 				if(isValid(playerNew, global)) {
-					happiness[i] = {playerNew.xPos, 
+					happiness[i] = [playerNew.xPos, 
 							playerNew.yPos, 
-							getHappiness(playerNew, global)};
+							getHappiness(playerNew, global)];
 					
 					if(happiness[maxHappiness] > happiness[i]) {
 						maxHappiness = i;
@@ -39,7 +39,7 @@ class Befindlichkeit {
 		player = playerNew;
 	}
 
-	function isValid(playerNew, global) {
+	isValid(playerNew, global) {
 		if(playerNew.xPos < 0 || playerNew.xPos >= global.Room.width || 
 		   playerNew.yPos < 0 || playerNew.yPos >= global.Room.heigth) //Player out of bounds
 			return false;
@@ -57,7 +57,7 @@ class Befindlichkeit {
 		return true;
 	}
 	
-	function getHappiness(playerNew, global) {
+	getHappiness(playerNew, global) {
 		var happiness = 0;
 		for(player in global.players) {
 			if(player.name != playerNew.name) {
@@ -85,7 +85,7 @@ class Befindlichkeit {
 		return happiness;
 	}
 
-	function clone(playerNew, player) {
+	clone(playerNew, player) {
 		playerNew.name = player.name;
 		playerNew.short = player.short;
 		playerNew.job = player.job;
