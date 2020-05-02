@@ -101,6 +101,6 @@ class Darstellung{
 
     updatePartyIndex(partyIndex)
     {
-        document.getElementById("partyindex").innerText = partyIndex;
+        document.getElementById("partyindex").innerText = partyIndex.toFixed(5);
     }
 }
