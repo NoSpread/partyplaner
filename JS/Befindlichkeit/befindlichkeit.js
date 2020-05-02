@@ -7,7 +7,7 @@ class Befindlichkeit {
 
 	updatePosition(playershort) {
 		var player;
-		for(playerx in this.players) {
+		for each (var playerx in this.players) {
 			if(playerx.short == playershort) {
 				player = playerx;
 				break;
@@ -48,7 +48,7 @@ class Befindlichkeit {
 		   playerNew.yPos >= this.game.Table.yPos && playerNew.yPos <= this.game.Table.yPos + this.game.Table.heigth) // Player on Table
 			return false;
 
-		for(player in this.game.players) {
+		for each(var player in this.game.players) {
 			if(player.name != playerNew.name) {
 				if(player.xPos == playerNew.xPos && player.yPos == playerNew.yPos)
 					return false;
@@ -59,7 +59,7 @@ class Befindlichkeit {
 	
 	getHappiness(playerNew) {
 		var happiness = 0;
-		for(player in this.game.players) {
+		for each(var player in this.game.players) {
 			if(player.name != playerNew.name) {
 				var distance = Math.sqrt(Math.pow(playerNew.xPos - player.xPos, 2) + Math.pow(playerNew.yPos - player.yPos, 2));
 				happiness += Math.abs(distance - playerNew.distances[player.name]); 		//mag Fehler schmeißen distances[player] vllt
