@@ -3,6 +3,7 @@
     <head>
         <title>Best Partyplaner Ever.</title>
         <meta charset="utf-8">
+        <script type="text/javascript" src="..\JS\Steuerung\steuerung.js"></script>
     </head>
     <body>
         <!--Drawing of the Party-->
@@ -18,15 +19,16 @@
         <div id="ui">
             <button onclick="steuerung.setSimulationSpeed(1)">Geschwindigkeit: 1x</button>
             <button onclick="steuerung.setSimulationSpeed(2)">Geschwindigkeit: 2x</button>
+            <button onclick="steuerung.setSimulationSpeed(4)">Geschwindigkeit: 4x</button>
+            <button onclick="steuerung.setSimulationSpeed(8)">Geschwindigkeit: 8x</button>
             <button onclick="steuerung.setSimulationSpeed(1)">Simulation starten/fortsetzen</button>
             <button onclick="steuerung.setSimulationSpeed(0)">Simulation pausieren</button>
-            <button>Importieren</button>
+            <input type="file" id="import" onchange="darstellung.readFile()"></button>
             <button>Exportieren</button>
             <button><a href="customConfig.html">Eigene Konfiguration</a></button>
         </div>
 
         <!--Partyscore-->
-        <div id="partyscore">
-        </div>
+        <h3 id="partyscore">0</h3>
     </body>
 </html>
