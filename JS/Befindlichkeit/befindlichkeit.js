@@ -56,7 +56,6 @@ class Befindlichkeit {
 				}
 		}
 
-		console.log("(" + playerNew.xPos + ", " + playerNew.yPos + ")"); 
 		return true;
 	}
 	
@@ -67,7 +66,7 @@ class Befindlichkeit {
 		for(var s = 0; s < player.length; s++) {
 			if(player[s].name != playerNew.name) {
 				var distance = Math.sqrt(Math.pow(playerNew.xPos - player[s].xPos, 2) + Math.pow(playerNew.yPos - player[s].yPos, 2));
-				happiness += Math.abs(distance - playerNew.distances[player[s].short]); 		//mag Fehler schmeißen distances[player] vllt
+				happiness += Math.abs(distance - playerNew.distances[player[s].short]);
 			}
 		}
 		var table = new Array();
@@ -88,6 +87,7 @@ class Befindlichkeit {
 		var distance = Math.sqrt(Math.pow(playerNew.xPos - table[0], 2) + Math.pow(playerNew.yPos - table[1], 2));
 
 		happiness += Math.abs(distance - playerNew.distances["Table"]);
+		
 		return happiness;
 	}
 
