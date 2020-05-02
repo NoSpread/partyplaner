@@ -87,6 +87,16 @@ class Darstellung{
             tableRow.appendChild(element);
         }
         table.appendChild(tableRow);
+        
+        tableRow = document.createElement("tr")
+        for(i = 0; i < players.length; i++)
+        {  
+            element = document.createElement("td");
+            text = document.createTextNode(players[i].happiness);
+            element.appendChild(text);
+            tableRow.appendChild(element);
+        }
+        table.appendChild(tableRow);
     }
 
     updatePartyIndex(partyIndex)
