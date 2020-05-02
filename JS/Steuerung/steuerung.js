@@ -49,7 +49,7 @@ class Steuerung{
   }
 
   nextPlayer(){
-    this.currentPlayer = (this.currentPlayer + 1) % this.shortNames.count;
+    this.currentPlayer = (this.currentPlayer + 1) % this.shortNames.length;
   }
 
   setSimulationSpeed(speed){
