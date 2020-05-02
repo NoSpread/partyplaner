@@ -2,12 +2,10 @@ class Befindlichkeit {
 	constructor(game) {
 		this.game = game;
 		this.players = this.game.players;
-		console.log("Befindlichkeit:constructor()");
 	}
 
 
 	updatePosition(playershort) {
-		console.log("Befindlichkeit:updatePosition(" + playershort + ")");
 		var player;
 
 
@@ -17,7 +15,7 @@ class Befindlichkeit {
 				break;
 			}
 		}
-		console.log("Befindlichkeit:updatePosition(" + playershort + ")=" + player.name);
+		console.log("Befindlichkeit:updatePosition(" + playershort + "/" + player.name + ");");
 
 		var happiness = new Array();
 		var i = 0, maxHappiness=0;
@@ -42,6 +40,7 @@ class Befindlichkeit {
 		playerNew.yPos = happiness[maxHappiness][1];
 		playerNew.happiness = happiness[maxHappiness][2];
 		player = playerNew;
+		console.log("Befindlichkeit:updatePosition():New Position: (" + player.xPos + ", " + player.yPos + ")");
 	}
 
 	isValid(playerNew) {
