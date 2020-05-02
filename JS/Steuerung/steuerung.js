@@ -12,21 +12,21 @@ class Steuerung{
   constructor(){
     this.players = new Array();
     this.darstellung = new Darstellung(this);
-    //this.konfiguration = new Konfiguration();
+    this.konfiguration = new Konfiguration();
     this.simulationSpeed = 0;
   }
 
   importFile(file){
     this.simulationSpeed = 0;
     this.game = importJSON(file);
-    // if(konfiguration.validate(this.game)){
-    this.extractShortNames();
-    this.befindlichkeit = new Befindlichkeit(this.game);
-    this.statistik = new Statistik();
-    return true;
-    // }else{
-    // return false;
-    // }
+    if(this.konfiguration.setCurrentConfig(this.game)){
+      this.extractShortNames();
+      this.befindlichkeit = new Befindlichkeit(this.game);
+      this.statistik = new Statistik();
+      return true;
+    }else{
+      return false;
+    }
   }
 
   exportFile(){
