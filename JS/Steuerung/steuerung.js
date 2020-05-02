@@ -53,7 +53,7 @@ class Steuerung{
   setSimulationSpeed(speed){
     if(speed > 8){
       speed = 8;
-    }elseif(speed < 0){
+    }else if(speed < 0){
       speed = 0;
     }
     this.simulationSpeed = speed;
