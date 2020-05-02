@@ -11,7 +11,7 @@ class Steuerung{
     this.darstellung = new Darstellung(this);
     //this.konfiguration = new Konfiguration();
     this.simulationSpeed = 0;
-    simulate();
+    this.simulate();
   }
 
   importFile(file){
@@ -59,11 +59,9 @@ class Steuerung{
     this.simulationSpeed = speed;
   }
 
-  async function simulate(id){
+  simulate(){
     while(this.simulationSpeed > 0){
-      calculateCurrentPlayer();
-      await new Promise(r => setTimeout(r, 100*(10-this.simulationSpeed)));
+      setTimeout(calculateCurrentPlayer(), 100*(10-this.simulationSpeed));
     }
-    return id;
   }
 }
