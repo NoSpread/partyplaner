@@ -28,7 +28,7 @@ class Statistik {
             playerAvg /= this.happinessLog[name].length;
             avg += playerAvg;
         }
-        avg /= Object.keys(this.happinessLog).length ** 2;
+        avg /= Math.pow(Object.keys(this.happinessLog).length, 2);
 
         var threshold = 10; // this avg would yield a score of 0.5
 
