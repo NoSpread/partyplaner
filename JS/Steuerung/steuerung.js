@@ -8,7 +8,7 @@ class Steuerung{
     this.currentPlayer = 0;
   }
 
-  function Steuerung(){
+  function constructor(){
     this.players = new Array();
     this.darstellung = new Darstellung(this);
     this.konfiguration = new Konfiguration();
