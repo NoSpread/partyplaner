@@ -16,14 +16,13 @@
 
         <!--UI-->
         <div id="ui">
-            <input type="text">
-            <button>Geschwindigkeit aktualisieren</button>
-            <button>Simulation starten</button>
-            <button>Simulation fortsetzen</button>
-            <button>Simulation pausieren</button>
+            <button onclick="steuerung.setSimulationSpeed(1)">Geschwindigkeit: 1x</button>
+            <button onclick="steuerung.setSimulationSpeed(2)">Geschwindigkeit: 2x</button>
+            <button onclick="steuerung.setSimulationSpeed(1)">Simulation starten/fortsetzen</button>
+            <button onclick="steuerung.setSimulationSpeed(0)">Simulation pausieren</button>
             <button>Importieren</button>
             <button>Exportieren</button>
-            <button>Eigene Konfiguration</button>
+            <button><a href="customConfig.html">Eigene Konfiguration</a></button>
         </div>
 
         <!--Partyscore-->
