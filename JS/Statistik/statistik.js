@@ -18,7 +18,7 @@ class Statistik {
         return avg;
     }
 
-    partyindex() {
+    partyIndex() {
         var avg = 0;
         for (var name in this.happinessLog) {
             var playerAvg = 0;
@@ -32,8 +32,8 @@ class Statistik {
 
         var threshold = 10; // this avg would yield a score of 0.5
 
-        var partyindex = 1 / (1 + (avg / threshold) ** 2); // nice bellcurve :D
+        var partyIndex = 1 / (1 + (avg / threshold) ** 2); // nice bellcurve :D
 
-        return partyindex;
+        return partyIndex;
     }
 }
