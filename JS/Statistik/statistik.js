@@ -1,4 +1,4 @@
-class Statistics {
+class Statistik {
     constructor() {
         this.happinessLog = {};
     }
