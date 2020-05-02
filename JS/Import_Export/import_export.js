@@ -1,15 +1,14 @@
-function importFile(inputText) {
+function importJSON(inputText) {
     var data = JSON.parse(inputText);
     return data;
 }
 
 function exportJSON(data) {
-    name = name || "spielDaten.json";
-    type = type || "text/plain";
+    data = JSON.stringify(data);
+    name = "spielDaten.json";
+    type = "application/json";
     var element = document.createElement('a');
-    var file = new Blob([JSON.stringify(data, null, 2)], {
-        type: 'application/json'
-    });
+    var file = new Blob([data], { type: type });
     element.href = URL.createObjectURL(file);
     element.download = name;
     element.click();
