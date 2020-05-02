@@ -57,7 +57,6 @@ class Darstellung{
         players.forEach(drawPlayer);
         function drawPlayer(player)
         {
-            console.log(player.short + "\n" + player.xPos * window.hPitch + "\n" + player.yPos * window.vPitch);
             window.context.fillText(player.short, player.xPos * window.hPitch, player.yPos * window.vPitch + window.vPitch, window.hPitch);
         }
     }
