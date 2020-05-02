@@ -6,6 +6,7 @@ class Befindlichkeit {
 
 
 	updatePosition(playershort) {
+		console.log("Befindlichkeit:updatePosition()");
 		var player;
 		for(var playerx in this.players) {
 			if(playerx.short == playershort) {
@@ -13,12 +14,13 @@ class Befindlichkeit {
 				break;
 			}
 		}
+		console.log("Befindlichkeit:updatePosition(".playershort.")=".player.name);
 
 		var happiness;
 		var i = 0, maxHappiness=0;
 		var playerNew;
 
-		this.clone(playerNew, player);
+		this.clonen(playerNew, player);
 		for(playerNew.xPos = player.xPos-1; playerNew.xPos <= player.xPos+1;playerNew.xPos++) {
 			for(playerNew.yPos = player.yPos-1; playerNew.yPos <= player.yPos+1; playerNew.yPos++) {
 				if(this.isValid(playerNew)) {
@@ -85,7 +87,8 @@ class Befindlichkeit {
 		return happiness;
 	}
 
-	clone(playerNew, player) {
+	clonen(playerNew, player) {
+		console.log("Befindlichkeit:Cloning()");
 		playerNew.name = player.name;
 		playerNew.short = player.short;
 		playerNew.job = player.job;
