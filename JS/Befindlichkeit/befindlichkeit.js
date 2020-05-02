@@ -2,23 +2,26 @@ class Befindlichkeit {
 	constructor(game) {
 		this.game = game;
 		this.players = this.game.players;
+		console.log("Befindlichkeit:constructor()");
 	}
 
 
 	updatePosition(playershort) {
-		console.log("Befindlichkeit:updatePosition()");
+		console.log("Befindlichkeit:updatePosition(" + playershort + ")");
 		var player;
-		for(var playerx in this.players) {
-			if(playerx.short == playershort) {
-				player = playerx;
+
+
+		for(var s = 0; s < this.players.length; s++) {
+			if(this.players[s].short == playershort) {
+				player = this.players[s];
 				break;
 			}
 		}
 		console.log("Befindlichkeit:updatePosition(" + playershort + ")=" + player.name);
 
-		var happiness;
+		var happiness = new Array();
 		var i = 0, maxHappiness=0;
-		var playerNew;
+		var playerNew = new Array();
 
 		this.clonen(playerNew, player);
 		for(playerNew.xPos = player.xPos-1; playerNew.xPos <= player.xPos+1;playerNew.xPos++) {
@@ -42,12 +45,12 @@ class Befindlichkeit {
 	}
 
 	isValid(playerNew) {
-		if(playerNew.xPos < 0 || playerNew.xPos >= this.game.Room.width || 
-		   playerNew.yPos < 0 || playerNew.yPos >= this.game.Room.heigth) //Player out of bounds
+		if(playerNew.xPos < 0 || playerNew.xPos >= this.game.room.width || 
+		   playerNew.yPos < 0 || playerNew.yPos >= this.game.room.heigth) //Player out of bounds
 			return false;
 		
-		if(playerNew.xPos >= this.game.Table.xPos && playerNew.xPos <= this.game.Table.xPos + this.game.Table.width &&
-		   playerNew.yPos >= this.game.Table.yPos && playerNew.yPos <= this.game.Table.yPos + this.game.Table.heigth) // Player on Table
+		if(playerNew.xPos >= this.game.table.xPos && playerNew.xPos <= this.game.table.xPos + this.game.table.width &&
+		   playerNew.yPos >= this.game.table.yPos && playerNew.yPos <= this.game.table.yPos + this.game.table.heigth) // Player on table
 			return false;
 
 		for(var player in this.game.players) {
@@ -67,18 +70,18 @@ class Befindlichkeit {
 				happiness += Math.abs(distance - playerNew.distances[player.name]); 		//mag Fehler schmeißen distances[player] vllt
 			}
 		}
-		var table;
-		if(playerNew.xPos < this.game.Table.xPos) {	//X Position 
-			table[0] = this.game.Table.xPos;
-		} else if(playerNew.xPos > this.game.Table.xPos + this.game.Table.width ) {
-			table[0] = this.game.Table.xPos + this.game.Table.width;
+		var table = new Array();
+		if(playerNew.xPos < this.game.table.xPos) {	//X Position 
+			table[0] = this.game.table.xPos;
+		} else if(playerNew.xPos > this.game.table.xPos + this.game.table.width ) {
+			table[0] = this.game.table.xPos + this.game.table.width;
 		} else {
 			table[0] = playerNew.xPos;
 		}
-		if(playerNew.yPos < this.game.Table.yPos) {	//Y Position 
-			table[1] = this.game.Table.yPos;
-		} else if(playerNew.yPos > this.game.Table.yPos + this.game.Table.heigth ) {
-			table[1] = this.game.Table.yPos + this.game.Table.heigth;
+		if(playerNew.yPos < this.game.table.yPos) {	//Y Position 
+			table[1] = this.game.table.yPos;
+		} else if(playerNew.yPos > this.game.table.yPos + this.game.table.heigth ) {
+			table[1] = this.game.table.yPos + this.game.table.heigth;
 		} else {
 			table[1] = playerNew.yPos;
 		}
