@@ -4,24 +4,29 @@ class Statistics {
     }
 
     avgHappiness(player) {
-        var happiness = getHappiness(player);
-        if (!player in this.happinessLog) {
-            this.happinessLog[player] = [];
+        if (!(player.name in this.happinessLog)) {
+            this.happinessLog[player.name] = [];
         }
-        this.happinessLog[player].push(happiness);
+        this.happinessLog[player.name].push(player.happiness);
 
-        return happiness;
+        var avg = 0;
+        for (var i = 0; i < this.happinessLog[player.name].length; i++) {
+            avg += this.happinessLog[player.name][i];
+        }
+        avg /= this.happinessLog[player.name].length;
+
+        return avg;
     }
 
     partyindex() {
         var avg = 0;
-        for (var guest in this.happinessLog) {
-            var guestAvg = 0;
-            for (var j = 0; j < this.happinessLog[guest].length; j++) {
-                guestAvg += this.happinessLog[guest][j];
+        for (var name in this.happinessLog) {
+            var playerAvg = 0;
+            for (var i = 0; i < this.happinessLog[name].length; i++) {
+                playerAvg += this.happinessLog[name][i];
             }
-            guestAvg /= this.happinessLog[guest].length;
-            avg += guestAvg;
+            playerAvg /= this.happinessLog[name].length;
+            avg += playerAvg;
         }
         avg /= Object.keys(this.happinessLog).length ** 2;
 
