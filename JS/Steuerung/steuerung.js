@@ -1,14 +1,12 @@
-// Currently undefined interfaces are represented with ………()
-
 class Steuerung{
 
-  function extractShortNames(){
+  extractShortNames(){
     this.shortNames = new Array();
     this.game.players.forEach(function(item){ this.shortNames.push(item.short); });
     this.currentPlayer = 0;
   }
 
-  function constructor(){
+  constructor(){
     this.players = new Array();
     this.darstellung = new Darstellung(this);
     //this.konfiguration = new Konfiguration();
@@ -16,7 +14,7 @@ class Steuerung{
     simulate();
   }
 
-  function importFile(file){
+  importFile(file){
     this.game = importJSON(file);
     // if(konfiguration.validate(this.game)){
     extractShortNames();
@@ -28,11 +26,11 @@ class Steuerung{
     // }
   }
 
-  function exportFile(){
+  exportFile(){
     exportJSON(game);
   }
 
-  function calculatePlayer(shortName){
+  calculatePlayer(shortName){
     this.befindlichkeit.updatePosition(shortName);
     // New position and happiness is automaticaly updated in game object.
     this.darstellung.drawRoom(this.game.room);
@@ -43,16 +41,16 @@ class Steuerung{
     this.darstellung.drawStatistics(players);
   }
 
-  function calculateCurrentPlayer(){
+  calculateCurrentPlayer(){
     calculatePlayer(this.shortNames[this.currentPlayer]);
     nextPlayer();
   }
 
-  function nextPlayer(){
+  nextPlayer(){
     this.currentPlayer = (this.currentPlayer + 1) % this.shortNames.count;
   }
 
-  function setSimulationSpeed(speed){
+  setSimulationSpeed(speed){
     if(speed > 8){
       speed = 8;
     }elseif(speed < 0){
@@ -61,7 +59,7 @@ class Steuerung{
     this.simulationSpeed = speed;
   }
 
-  async function simulate(){
+  async simulate(){
     while(this.simulationSpeed > 0){
       calculateCurrentPlayer();
       await new Promise(r => setTimeout(r, 100*(10-this.simulationSpeed));
