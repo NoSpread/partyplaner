@@ -4,7 +4,7 @@ class Steuerung{
     this.shortNames = new Array();
     for(var i = 0; i < this.game.players.length; i++)
     {
-      this.shortNames.push(players[i].short);
+      this.shortNames.push(this.game.players[i].short);
     }
     this.currentPlayer = 0;
   }
