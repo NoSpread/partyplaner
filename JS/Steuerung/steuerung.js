@@ -24,6 +24,10 @@ class Steuerung{
     this.statistik = new Statistik(this.game);
   }
 
+  function exportFile(){
+    exportJSON(game);
+  }
+
   function calculatePlayer(shortName){
     this.befindlichkeit.………(shortName);
     // New position and happiness is automaticaly updated in game object.
