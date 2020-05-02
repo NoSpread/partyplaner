@@ -1,13 +1,24 @@
 # partyplaner
 🐱‍🐉
 
+Projekt ist betriebsbereit!<br>
+-> /HTML/partyplaner.html<br>
+
+Bisher wird das Einlesen der Spieleinformationen nur von Datei unterstützt -> testdaten.json<br>
+
+
+TODO<br>
+- Verwendung der Konfiguration<br>
+- grafische Oberfläche zur Eingabe der Daten<br>
+- Fehlerbehebung in Export<br>
+
+
 Darstellung: Kevin<br>
 Befindlichkeit: Florian<br>
 Statistik: Lukas<br>
 Import_Export: Moritz<br>
 Konfiguration: Julian<br>
 Steuerung: Peter<br>
-
 
 Daten<br>
 
