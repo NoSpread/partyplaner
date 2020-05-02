@@ -61,7 +61,7 @@ class Darstellung{
         }
     }
     
-    drawStatistics(players)
+    drawStatistics(players, statistik)
     {
         var table = document.getElementById("avgHappiness")
         table.innerHTML = "";
@@ -82,7 +82,7 @@ class Darstellung{
         for(i = 0; i < players.length; i++)
         {  
             element = document.createElement("td");
-            text = document.createTextNode(players[i].happiness);
+            text = document.createTextNode(statistik.avgHappiness(players[i]));
             element.appendChild(text);
             tableRow.appendChild(element);
         }
