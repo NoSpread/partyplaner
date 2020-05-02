@@ -2,7 +2,10 @@ class Steuerung{
 
   extractShortNames(){
     this.shortNames = new Array();
-    this.game.players.forEach(function(item){ this.shortNames.push(item.short); });
+    for(var i = 0; i < this.game.players.length; i++)
+    {
+      this.shortNames.push(players[i].short);
+    }
     this.currentPlayer = 0;
   }
 
@@ -27,7 +30,7 @@ class Steuerung{
   }
 
   exportFile(){
-    exportJSON(game);
+    this.exportJSON(game);
   }
 
   calculatePlayer(shortName){
@@ -42,8 +45,8 @@ class Steuerung{
   }
 
   calculateCurrentPlayer(){
-    calculatePlayer(this.shortNames[this.currentPlayer]);
-    nextPlayer();
+    this.calculatePlayer(this.shortNames[this.currentPlayer]);
+    this.nextPlayer();
   }
 
   nextPlayer(){
