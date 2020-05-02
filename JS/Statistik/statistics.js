@@ -1,19 +1,34 @@
-function partyindex(guestlist) {
-    var avg = 0;
-    for (var i = 0; i < guestlist.length; i++) {
-        var guest = guestlist[i];
-        var guestAvg = 0;
-        for (var j = 0; j < guest.happiness.length; j++) {
-            guestAvg += guest.happiness[j];
-        }
-        guestAvg /= guest.happiness.length;
-        avg += guestAvg;
+class Statistics {
+    constructor() {
+        this.happinessLog = {};
     }
-    avg /= guestlist.length ** 2;
 
-    var threshold = 10; // this avg would yield a score of 0.5
+    avgHappiness(player) {
+        var happiness = getHappiness(player);
+        if (!player in this.happinessLog) {
+            this.happinessLog[player] = [];
+        }
+        this.happinessLog[player].push(happiness);
 
-    var partyindex = 1 / (1 + (avg / threshold) ** 2); // nice bellcurve :D
+        return happiness;
+    }
 
-    return partyindex;
+    partyindex() {
+        var avg = 0;
+        for (var guest in this.happinessLog) {
+            var guestAvg = 0;
+            for (var j = 0; j < this.happinessLog[guest].length; j++) {
+                guestAvg += this.happinessLog[guest][j];
+            }
+            guestAvg /= this.happinessLog[guest].length;
+            avg += guestAvg;
+        }
+        avg /= Object.keys(this.happinessLog).length ** 2;
+
+        var threshold = 10; // this avg would yield a score of 0.5
+
+        var partyindex = 1 / (1 + (avg / threshold) ** 2); // nice bellcurve :D
+
+        return partyindex;
+    }
 }
