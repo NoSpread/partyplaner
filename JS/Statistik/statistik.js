@@ -30,7 +30,7 @@ class Statistik {
         }
         avg /= Math.pow(Object.keys(this.happinessLog).length, 2);
 
-        var threshold = 10; // this avg would yield a score of 0.5
+        var threshold = 1; // this avg would yield a score of 0.5
 
         var partyIndex = 1 / (1 + (avg / threshold) ** 2); // nice bellcurve :D
 
