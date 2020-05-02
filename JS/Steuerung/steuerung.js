@@ -59,10 +59,11 @@ class Steuerung{
     this.simulationSpeed = speed;
   }
 
-  function async simulate(){
+  async function simulate(id){
     while(this.simulationSpeed > 0){
       calculateCurrentPlayer();
       await new Promise(r => setTimeout(r, 100*(10-this.simulationSpeed)));
     }
+    return id;
   }
 }
