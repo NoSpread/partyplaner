@@ -18,13 +18,13 @@ class Befindlichkeit {
 		var i = 0, maxHappiness=0;
 		var playerNew;
 
-		clone(playerNew, player);
+		this.clone(playerNew, player);
 		for(playerNew.xPos = player.xPos-1; playerNew.xPos <= player.xPos+1;playerNew.xPos++) {
 			for(playerNew.yPos = player.yPos-1; playerNew.yPos <= player.yPos+1; playerNew.yPos++) {
-				if(isValid(playerNew, global)) {
+				if(this.isValid(playerNew)) {
 					happiness[i] = [playerNew.xPos, 
 							playerNew.yPos, 
-							getHappiness(playerNew, global)];
+							this.getHappiness(playerNew)];
 					
 					if(happiness[maxHappiness] > happiness[i]) {
 						maxHappiness = i;
@@ -33,22 +33,22 @@ class Befindlichkeit {
 				}
 			}
 		}
-		playerNew.xPos(happiness[maxHappiness][0]);
-		playerNew.yPos(happiness[maxHappiness][1]);
-		playerNew.happiness(happiness[maxHappiness][2]);
+		playerNew.xPos = happiness[maxHappiness][0]);
+		playerNew.yPos = happiness[maxHappiness][1]);
+		playerNew.happiness = happiness[maxHappiness][2]);
 		player = playerNew;
 	}
 
-	isValid(playerNew, global) {
-		if(playerNew.xPos < 0 || playerNew.xPos >= global.Room.width || 
-		   playerNew.yPos < 0 || playerNew.yPos >= global.Room.heigth) //Player out of bounds
+	isValid(playerNew) {
+		if(playerNew.xPos < 0 || playerNew.xPos >= this.game.Room.width || 
+		   playerNew.yPos < 0 || playerNew.yPos >= this.game.Room.heigth) //Player out of bounds
 			return false;
 		
-		if(playerNew.xPos >= global.Table.xPos && playerNew.xPos <= global.Table.xPos + global.Table.width &&
-		   playerNew.yPos >= global.Table.yPos && playerNew.yPos <= global.Table.yPos + global.Table.heigth) // Player on Table
+		if(playerNew.xPos >= this.game.Table.xPos && playerNew.xPos <= this.game.Table.xPos + this.game.Table.width &&
+		   playerNew.yPos >= this.game.Table.yPos && playerNew.yPos <= this.game.Table.yPos + this.game.Table.heigth) // Player on Table
 			return false;
 
-		for(player in global.players) {
+		for(player in this.game.players) {
 			if(player.name != playerNew.name) {
 				if(player.xPos == playerNew.xPos && player.yPos == playerNew.yPos)
 					return false;
@@ -57,31 +57,31 @@ class Befindlichkeit {
 		return true;
 	}
 	
-	getHappiness(playerNew, global) {
+	getHappiness(playerNew) {
 		var happiness = 0;
-		for(player in global.players) {
+		for(player in this.game.players) {
 			if(player.name != playerNew.name) {
 				var distance = Math.sqrt(Math.pow(playerNew.xPos - player.xPos, 2) + Math.pow(playerNew.yPos - player.yPos, 2));
 				happiness += Math.abs(distance - playerNew.distances[player.name]); 		//mag Fehler schmeißen distances[player] vllt
 			}
 		}
 		var table;
-		if(playerNew.xPos < global.Table.xPos) {	//X Position 
-			table[0] = global.Table.xPos;
-		} else if(playerNew.xPos > global.Table.xPos + global.Table.width ) {
-			table[0] = global.Table.xPos + global.Table.width;
+		if(playerNew.xPos < this.game.Table.xPos) {	//X Position 
+			table[0] = this.game.Table.xPos;
+		} else if(playerNew.xPos > this.game.Table.xPos + this.game.Table.width ) {
+			table[0] = this.game.Table.xPos + this.game.Table.width;
 		} else {
 			table[0] = playerNew.xPos;
 		}
-		if(playerNew.yPos < global.Table.yPos) {	//Y Position 
-			table[1] = global.Table.yPos;
-		} else if(playerNew.yPos > global.Table.yPos + global.Table.heigth ) {
-			table[1] = global.Table.yPos + global.Table.heigth;
+		if(playerNew.yPos < this.game.Table.yPos) {	//Y Position 
+			table[1] = this.game.Table.yPos;
+		} else if(playerNew.yPos > this.game.Table.yPos + this.game.Table.heigth ) {
+			table[1] = this.game.Table.yPos + this.game.Table.heigth;
 		} else {
 			table[1] = playerNew.yPos;
 		}
 		var distance = Math.sqrt(Math.pow(playerNew.xPos - table[0], 2) + Math.pow(playerNew.yPos - table[1], 2));
-		happiness += Math.abs(distance - playerNew.distances[global.table]);
+		happiness += Math.abs(distance - playerNew.distances[this.game.table]);
 		return happiness;
 	}
 
