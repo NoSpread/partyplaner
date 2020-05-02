@@ -16,7 +16,7 @@ class Konfiguration {
                 }
                 if(!Object.keys(requiredAttributes).every(attr => typeof config[attr] == requiredAttributes[attr]))
                     return false;
-                if(table.height < 0 || table.width < 0 || table.xPos < 0 || table.yPos < 0)
+                if(config.height < 0 || config.width < 0 || config.xPos < 0 || config.yPos < 0)
                     return false;
                 return true;
             }
