@@ -1,0 +1,41 @@
+<script type="text/Javascript">
+
+	function UpdatePosition(player) {
+		var players = getPlayers(); // daraus player löschen
+		var distanceMatrix = getMatrix();
+		var happiness;
+		var i = 0, maxHappiness=0;
+		var playerNew = player; //richtige Copie pls
+
+		for(playerNew.getX = player.getX-1; playerNew.getX <= player.getX+1;playerNew.getX++) {
+			for(playerNew.getY = player.getY-1; playerNew.getY <= player.getY+1; playerNew.getY++) {
+				if(isValid(playerNew,players)) {
+					happiness[i] = {x,y,getHappiness(distancematrix[player], playernew, players)};
+					if(happiness[maxhappiness] > happiness[i])
+						maxhappiness = i;
+					i++;
+				}
+			}
+		}
+		playerNew.setX(happiness[maxhappiness][0]);
+		playerNew.setY(happiness[maxhappiness[1]);
+		playerNew.setHappiness(happiness[maxHappiness][2]);
+		player = playerNew;
+	}
+
+	//TODO: Grenzen, Tisch
+	function isValid(var x,var y,var players) {
+		for(player in players) {
+			if(player.getX == x && player.getY == y)
+				return false;
+		}
+		return true;
+	}
+	
+	//TODO: Tisch
+	function getHappiness(var distancematrix,var playerNew, var players) {
+		for 
+	}
+
+
+</script>
