@@ -20,7 +20,7 @@ class Befindlichkeit {
 		var i = 0, maxHappiness = 0;
 		var playerNew = new Array();
 
-		this.clonen(playerNew, player);
+		this.clone(playerNew, player);
 		for(playerNew.xPos = player.xPos-1; playerNew.xPos <= player.xPos+1;playerNew.xPos++) {
 			for(playerNew.yPos = player.yPos-1; playerNew.yPos <= player.yPos+1; playerNew.yPos++) {
 				if(this.isValid(playerNew)) {
@@ -28,7 +28,7 @@ class Befindlichkeit {
 							playerNew.yPos, 
 							this.getHappiness(playerNew)];
 					
-					if(happiness[maxHappiness] > happiness[i]) {
+					if(happiness[maxHappiness][2] > happiness[i][2]) {
 						maxHappiness = i;
 					}
 					i++;
@@ -42,12 +42,11 @@ class Befindlichkeit {
 	}
 
 	isValid(playerNew) {
-		if(playerNew.xPos < 0 || playerNew.xPos >= this.game.room.width || 
-		   playerNew.yPos < 0 || playerNew.yPos >= this.game.room.heigth) //Player out of bounds
+		if(playerNew.xPos < 0 || playerNew.xPos >= this.game.room.width || playerNew.yPos < 0 || playerNew.yPos >= this.game.room.height) {
 			return false;
-		
-		if(playerNew.xPos >= this.game.table.xPos && playerNew.xPos <= this.game.table.xPos + this.game.table.width &&
-		   playerNew.yPos >= this.game.table.yPos && playerNew.yPos <= this.game.table.yPos + this.game.table.heigth) // Player on table
+		}
+		if(playerNew.xPos >= this.game.table.xPos && playerNew.xPos < this.game.table.xPos + this.game.table.width &&
+		   playerNew.yPos >= this.game.table.yPos && playerNew.yPos < this.game.table.yPos + this.game.table.height) // Player on table
 			return false;
 
 		for(var s = 0; s < this.players.length; s++) {
@@ -56,16 +55,18 @@ class Befindlichkeit {
 					return false;
 				}
 		}
+
+		console.log("(" + playerNew.xPos + ", " + playerNew.yPos + ")"); 
 		return true;
 	}
 	
 	getHappiness(playerNew) {
-		var happiness = 1.00;
-		var player = this.players
+		var happiness = 0.00;
+		var player = this.players;
 
 		for(var s = 0; s < player.length; s++) {
 			if(player[s].name != playerNew.name) {
-				var distance = Math.sqrt(Math.pow(playerNew.xPos * 1 - player[s].xPos * 1, 2) + Math.pow(playerNew.yPos * 1 - player[s].yPos * 1, 2));
+				var distance = Math.sqrt(Math.pow(playerNew.xPos - player[s].xPos, 2) + Math.pow(playerNew.yPos - player[s].yPos, 2));
 				happiness += Math.abs(distance - playerNew.distances[player[s].short]); 		//mag Fehler schmeißen distances[player] vllt
 			}
 		}
@@ -79,8 +80,8 @@ class Befindlichkeit {
 		}
 		if(playerNew.yPos < this.game.table.yPos) {	//Y Position 
 			table[1] = this.game.table.yPos;
-		} else if(playerNew.yPos > this.game.table.yPos + this.game.table.heigth ) {
-			table[1] = this.game.table.yPos + this.game.table.heigth;
+		} else if(playerNew.yPos > this.game.table.yPos + this.game.table.height ) {
+			table[1] = this.game.table.yPos + this.game.table.height;
 		} else {
 			table[1] = playerNew.yPos;
 		}
@@ -90,8 +91,7 @@ class Befindlichkeit {
 		return happiness;
 	}
 
-	clonen(playerNew, player) {
-		console.log("Befindlichkeit:Cloning()");
+	clone(playerNew, player) {
 		playerNew.name = player.name;
 		playerNew.short = player.short;
 		playerNew.job = player.job;
