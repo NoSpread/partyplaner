@@ -12,13 +12,12 @@ class Steuerung{
     this.players = new Array();
     this.darstellung = new Darstellung(this);
     this.konfiguration = new Konfiguration();
-    this.importExport = new ImportExport();
     this.simulationSpeed = 0;
     simulate();
   }
 
   function importFile(file){
-    this.game = importExport.readFile(file);
+    this.game = importJSON(file);
     konfiguration.validate(this.game);
     extractShortNames();
     this.befindlichkeit = new Befindlichkeit(this.game);
