@@ -29,13 +29,13 @@ distance<br>
 Table -> {<br>
 xPos,<br>
 yPos,<br>
-length,  //x-Achse<br>
-width    //y-Achse<br>
+width,  //x-Achse<br>
+height    //y-Achse<br>
 }<br>
 <br>
 Room -> {<br>
-length, //x-Achse<br>
-width   //y-Achse<br>
+width, //x-Achse<br>
+height   //y-Achse<br>
 }<br>
 Game -> {<br>
 Player,<br>

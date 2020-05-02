@@ -3,21 +3,15 @@
     <head>
         <title>Best Partyplaner Ever.</title>
         <meta charset="utf-8">
-        <script type="text/javascript" src="..\JS\Befindlichkeit\befindlichkeit.js"></script>
-        <script type="text/javascript" src="..\JS\Darstellung\darstellung.js"></script>
-        <script type="text/javascript" src="..\JS\Import_Export\import_export.js"></script>
-        <script type="text/javascript" src="..\JS\Konfiguration\konfiguration.js"></script>
-        <script type="text/javascript" src="..\JS\Statistik\statistik.js"></script>
-        <script type="text/javascript" src="..\JS\Steuerung\steuerung.js"></script>
     </head>
     <body>
         <!--Drawing of the Party-->
-        <canvas id="canvas">
+        <canvas id="canvas" style="border:1px solid #000000;">
             Your browser does not support the canvas element.
         </canvas>
 
         <!--Average Mental Health-->
-        <table id="avgHealth">
+        <table id="avgHappiness">
         </table>
 
         <!--UI-->
@@ -29,11 +23,22 @@
             <button onclick="steuerung.setSimulationSpeed(1)">Simulation starten/fortsetzen</button>
             <button onclick="steuerung.setSimulationSpeed(0)">Simulation pausieren</button>
             <input type="file" id="import" onchange="darstellung.readFile()"></button>
-            <button>Exportieren</button>
+            <button onclick="steuerung.exportFile()">Exportieren</button>
             <button><a href="customConfig.html">Eigene Konfiguration</a></button>
         </div>
 
         <!--Partyscore-->
-        <h3 id="partyscore">0</h3>
+        <h3 id="partyindex">0</h3>
+
+        <!--Include js files-->
+        <script type="text/javascript" src="..\JS\Befindlichkeit\befindlichkeit.js"></script>
+        <script type="text/javascript" src="..\JS\Darstellung\darstellung.js"></script>
+        <script type="text/javascript" src="..\JS\Import_Export\import_export.js"></script>
+        <script type="text/javascript" src="..\JS\Konfiguration\konfiguration.js"></script>
+        <script type="text/javascript" src="..\JS\Statistik\statistik.js"></script>
+        <script type="text/javascript" src="..\JS\Steuerung\steuerung.js"></script>
+        <script type="text/javascript" src="..\JS\setup.js"></script>
+
+        
     </body>
 </html>
