@@ -22,9 +22,9 @@ class Befindlichkeit {
 		for(playerNew.xPos = player.xPos-1; playerNew.xPos <= player.xPos+1;playerNew.xPos++) {
 			for(playerNew.yPos = player.yPos-1; playerNew.yPos <= player.yPos+1; playerNew.yPos++) {
 				if(isValid(playerNew, global)) {
-					happiness[i] = {playerNew.xPos, 
+					happiness[i] = [playerNew.xPos, 
 							playerNew.yPos, 
-							getHappiness(playerNew, global)};
+							getHappiness(playerNew, global)];
 					
 					if(happiness[maxHappiness] > happiness[i]) {
 						maxHappiness = i;
