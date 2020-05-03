@@ -10,7 +10,6 @@ Bisher wird das Einlesen der Spieleinformationen nur von Datei unterstützt -> t
 TODO<br>
 - Verwendung der Konfiguration<br>
 - grafische Oberfläche zur Eingabe der Daten<br>
-- Fehlerbehebung in Export<br>
 
 
 Darstellung: Kevin<br>
