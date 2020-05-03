@@ -30,7 +30,7 @@ class Steuerung{
   }
 
   exportFile(){
-    this.exportJSON(game);
+    exportJSON(this.game);
   }
 
   calculatePlayer(shortName){
