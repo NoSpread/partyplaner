@@ -4,10 +4,9 @@ class Befindlichkeit {
 		this.players = this.game.players;
 	}
 
-
 	updatePosition(playershort) {
 		var player;
-		console.log("Befindlichkeit:updatePosition(" + playershort + ")");
+		// console.log("Befindlichkeit:updatePosition(" + playershort + ")");
 
 		for(var s = 0; s < this.players.length; s++) {
 			if(this.players[s].short == playershort) {
@@ -24,10 +23,10 @@ class Befindlichkeit {
 		for(playerNew.xPos = player.xPos-1; playerNew.xPos <= player.xPos+1;playerNew.xPos++) {
 			for(playerNew.yPos = player.yPos-1; playerNew.yPos <= player.yPos+1; playerNew.yPos++) {
 				if(this.isValid(playerNew)) {
-					happiness[i] = [playerNew.xPos, 
-							playerNew.yPos, 
+					happiness[i] = [playerNew.xPos,
+							playerNew.yPos,
 							this.getHappiness(playerNew)];
-					
+
 					if(happiness[maxHappiness][2] > happiness[i][2]) {
 						maxHappiness = i;
 					}
@@ -38,7 +37,7 @@ class Befindlichkeit {
 		player.xPos = happiness[maxHappiness][0];
 		player.yPos = happiness[maxHappiness][1];
 		player.happiness = happiness[maxHappiness][2];
-		console.log("Befindlichkeit:updatePosition():New Position: (" + player.xPos + ", " + player.yPos + "):" + player.happiness);
+		// console.log("Befindlichkeit:updatePosition():New Position: (" + player.xPos + ", " + player.yPos + "):" + player.happiness);
 	}
 
 	isValid(playerNew) {
@@ -58,7 +57,7 @@ class Befindlichkeit {
 
 		return true;
 	}
-	
+
 	getHappiness(playerNew) {
 		var happiness = 0.00;
 		var player = this.players;
@@ -70,14 +69,14 @@ class Befindlichkeit {
 			}
 		}
 		var table = new Array();
-		if(playerNew.xPos < this.game.table.xPos) {	//X Position 
+		if(playerNew.xPos < this.game.table.xPos) {	//X Position
 			table[0] = this.game.table.xPos;
 		} else if(playerNew.xPos > this.game.table.xPos + this.game.table.width ) {
 			table[0] = this.game.table.xPos + this.game.table.width;
 		} else {
 			table[0] = playerNew.xPos;
 		}
-		if(playerNew.yPos < this.game.table.yPos) {	//Y Position 
+		if(playerNew.yPos < this.game.table.yPos) {	//Y Position
 			table[1] = this.game.table.yPos;
 		} else if(playerNew.yPos > this.game.table.yPos + this.game.table.height ) {
 			table[1] = this.game.table.yPos + this.game.table.height;
@@ -87,7 +86,7 @@ class Befindlichkeit {
 		var distance = Math.sqrt(Math.pow(playerNew.xPos - table[0], 2) + Math.pow(playerNew.yPos - table[1], 2));
 
 		happiness += Math.abs(distance - playerNew.distances["Table"]);
-		
+
 		return happiness;
 	}
 
