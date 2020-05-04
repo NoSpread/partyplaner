@@ -10,19 +10,20 @@ class Steuerung{
   }
 
   constructor(){
-    this.players = new Array();
     this.darstellung = new Darstellung(this);
     this.konfiguration = new Konfiguration();
-    this.simulationSpeed = 0;
+    this.simulationSpeed = 1;
+    this.running = false;
   }
 
   importFile(file){
-    this.simulationSpeed = 0;
+    this.simulationSpeed = 1;
     this.game = importJSON(file);
     if(this.konfiguration.setCurrentConfig(this.game)){
       this.extractShortNames();
       this.befindlichkeit = new Befindlichkeit(this.game);
       this.statistik = new Statistik();
+      this.darstellung.drawRoom(this.game.room, this.game.table, this.game.players)
       return true;
     }else{
       return false;
@@ -35,10 +36,15 @@ class Steuerung{
 
   calculatePlayer(shortName){
     this.befindlichkeit.updatePosition(shortName);
+
+    for (var i = 0; i < this.game.players.length; i++) {
+        if (this.game.players[i].short == shortName) {
+            this.statistik.logHappiness(this.game.players[i]);
+            break;
+        }
+    }
     // New position and happiness is automaticaly updated in game object.
-    this.darstellung.drawRoom(this.game.room);
-    this.darstellung.drawTable(this.game.table);
-    this.darstellung.drawPlayers(this.game.players);
+    this.darstellung.drawRoom(this.game.room, this.game.table, this.game.players);
 
     this.darstellung.updatePartyIndex(this.statistik.partyIndex());
     this.darstellung.drawStatistics(this.game.players, this.statistik);
@@ -53,22 +59,21 @@ class Steuerung{
     this.currentPlayer = (this.currentPlayer + 1) % this.shortNames.length;
   }
 
+  toggle() {
+    this.running = !this.running;
+    if (this.running) {
+        setTimeout(this.simulate.bind(this), 0);
+    }
+  }
+
   setSimulationSpeed(speed){
-    if(speed > 8){
-      speed = 8;
-    }else if(speed < 0){
-      speed = 0;
-    }
-    if(speed > 0 && this.simulationSpeed == 0){
-      setTimeout(this.simulate.bind(this), 0);
-    }
     this.simulationSpeed = speed;
   }
 
   simulate(){
-    if(this.simulationSpeed > 0)this.calculateCurrentPlayer();
-    if(this.simulationSpeed > 0){
-      this.timeout = setTimeout(this.simulate.bind(this), 1000 - 100*this.simulationSpeed);
+    if(this.running){
+      this.calculateCurrentPlayer();
+      setTimeout(this.simulate.bind(this), 1000 / this.simulationSpeed);
     }
   }
 }

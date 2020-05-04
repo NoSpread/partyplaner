@@ -22,15 +22,14 @@
             <button onclick="steuerung.setSimulationSpeed(2)">Geschwindigkeit: 2x</button>
             <button onclick="steuerung.setSimulationSpeed(4)">Geschwindigkeit: 4x</button>
             <button onclick="steuerung.setSimulationSpeed(8)">Geschwindigkeit: 8x</button>
-            <button onclick="steuerung.setSimulationSpeed(1)">Simulation starten/fortsetzen</button>
-            <button onclick="steuerung.setSimulationSpeed(0)">Simulation pausieren</button>
+            <button onclick="steuerung.toggle()">Simulation starten/stoppen</button>
             <input type="file" id="import" onchange="steuerung.darstellung.readFile()"></button>
             <button onclick="steuerung.exportFile()">Exportieren</button>
             <button><a href="customConfig.html">Eigene Konfiguration</a></button>
         </div>
 
         <!--Partyscore-->
-        <h3 id="partyindex">0</h3>
+        <h3 id="partyindex"></h3>
 
         <!--Include js files-->
         <script type="text/javascript" src="..\JS\Befindlichkeit\befindlichkeit.js"></script>

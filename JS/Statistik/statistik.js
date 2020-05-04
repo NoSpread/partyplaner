@@ -3,11 +3,17 @@ class Statistik {
         this.happinessLog = {};
     }
 
-    avgHappiness(player) {
+    logHappiness(player) {
         if (!(player.name in this.happinessLog)) {
             this.happinessLog[player.name] = [];
         }
         this.happinessLog[player.name].push(player.happiness);
+    }
+
+    avgHappiness(player) {
+        if (!(player.name in this.happinessLog)) {
+            return;
+        }
 
         var avg = 0;
         for (var i = 0; i < this.happinessLog[player.name].length; i++) {
@@ -19,6 +25,10 @@ class Statistik {
     }
 
     partyIndex() {
+        if (Object.keys(this.happinessLog).length == 0) {
+            return;
+        }
+        
         var avg = 0;
         for (var name in this.happinessLog) {
             var playerAvg = 0;
@@ -30,9 +40,9 @@ class Statistik {
         }
         avg /= Math.pow(Object.keys(this.happinessLog).length, 2);
 
-        var threshold = 1; // this avg would yield a score of 0.5
+        var threshold = 1; // this avg would yield a score of 50.0
 
-        var partyIndex = 1 / (1 + (avg / threshold) ** 2); // nice bellcurve :D
+        var partyIndex = 100 / (1 + (avg / threshold) ** 2); // nice bellcurve :D
 
         return partyIndex;
     }

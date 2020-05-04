@@ -3,6 +3,7 @@
 
 Projekt ist betriebsbereit!<br>
 -> /HTML/partyplaner.html<br>
+Demo-Video: https://www.youtube.com/watch?v=ub82Xb1C8os
 
 Bisher wird das Einlesen der Spieleinformationen nur von Datei unterstützt -> testdaten.json<br>
 
